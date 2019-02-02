@@ -1,0 +1,11 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    compileOnly deps.android.runtime
+    api deps.androidx.annotations
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

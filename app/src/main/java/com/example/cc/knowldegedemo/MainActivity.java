@@ -9,7 +9,9 @@ import android.view.View;
 
 import com.example.cc.utils.AppUtils;
 import com.example.cc.utils.TimeUtils;
+import com.internal.Print;
 
+@Print(text = "aaa")
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -32,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
                 builder.create().show();
             }
         });
+
+//        A$$Test test = new A$$Test();
+//        Log.e("dream", test.getMessage());
     }
 
     @Override

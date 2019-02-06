@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.example.cc.knowldegedemo.auto.A$$Test;
 import com.example.cc.utils.AppUtils;
 import com.example.cc.utils.TimeUtils;
 import com.internal.Print;
@@ -35,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        A$$Test test = new A$$Test();
-//        Log.e("dream", test.getMessage());
+        A$$Test test = new A$$Test();
+        Log.e("dream", test.getMessage());
     }
 
     @Override

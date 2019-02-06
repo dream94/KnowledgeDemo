@@ -24,10 +24,10 @@ import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
 /**
- * Created by cc on 2019/2/2.
+ * Created by cc on 2019/2/6.
  */
 @AutoService(Processor.class)
-public class MyProcessor extends AbstractProcessor {
+public class AptProcessor extends AbstractProcessor {
     private Types mTypeUtils;
     private Elements mElementUtils;
     private Filer mFiler;
@@ -59,8 +59,8 @@ public class MyProcessor extends AbstractProcessor {
     }
 
     @Override
-    public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-        //这里开始处理我们的注解解析了，以及生成Java文件
+    public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {//这里开始处理我们的注解解析了，以及生成Java文件
+        info("Processor process start <<<");
         if (set == null || set.isEmpty()) {
             info(">>> set is null... <<<");
             return true;
@@ -95,31 +95,28 @@ public class MyProcessor extends AbstractProcessor {
 
     private void analysisAnnotated(Element classElement) {
         Print annotation = classElement.getAnnotation(Print.class);
-        String name = "A";
         String text = annotation.text();
-        error(text);
+
 //        TypeElement superClassName = mElementUtils.getTypeElement(name);
-        String newClassName = name + SUFFIX;
+        String newClassName = "A" + SUFFIX;
 
         StringBuilder builder = new StringBuilder()
                 .append("package com.example.cc.knowldegedemo.auto;\n\n")
                 .append("public class ")
                 .append(newClassName)
                 .append(" {\n\n") // open class
-//                .append("\tpublic String getMessage() {\n") // open method
-//                .append("\t\treturn \"");
-//
-//        // this is appending to the return statement
-//        builder.append(text).append(name).append(" !\\n");
-//
-//
-//        builder.append("\";\n") // end return
-//                .append("\t}\n") // close method
+                .append("\tpublic String getMessage() {\n") // open method
+                .append("\t\treturn \"");
+
+        // this is appending to the return statement
+        builder.append(text).append(text).append(" !\\n");
+
+
+        builder.append("\";\n") // end return
+                .append("\t}\n") // close method
                 .append("}\n"); // close class
 
-        mMessager.printMessage(
-                Diagnostic.Kind.ERROR,
-                builder.toString());
+
         try { // write the file
             JavaFileObject source = mFiler.createSourceFile("com.example.cc.knowldegedemo.auto." + newClassName);
             Writer writer = source.openWriter();
@@ -129,16 +126,9 @@ public class MyProcessor extends AbstractProcessor {
         } catch (IOException e) {
             // Note: calling e.printStackTrace() will print IO errors
             // that occur from the file already existing after its first run, this is normal
-            info(">>> analysisAnnotated iIOException:" + e.getMessage());
         }
 
         info(">>> analysisAnnotated is finish... <<<");
-    }
-
-    private void error(String s) {
-        mMessager.printMessage(
-                Diagnostic.Kind.ERROR,
-                s);
     }
 
     private void error(Element e, String msg, Object... args) {

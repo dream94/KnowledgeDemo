@@ -4,12 +4,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project('::apt-annotation')
 
-//    api deps.javapoet
+    api deps.javapoet
     compileOnly deps.auto.service
 //    compileOnly files(org.gradle.internal.jvm.Jvm.current().getToolsJar())
 
 
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

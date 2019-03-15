@@ -1,4 +1,4 @@
-package com.example.java.dynamicproxy;
+package com.javalib;
 
 /**
  * Created by cc on 2019/1/27.

@@ -23,6 +23,14 @@ android {
 
 }
 
+android {
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'
@@ -35,4 +43,5 @@ dependencies {
     annotationProcessor project(path: ':apt-compiler')
     implementation project(path: ':apt-compiler')
     implementation project(path: ':apt-annotation')
+    implementation project(path: ':javalib')
 }

@@ -1,1 +1,1 @@
-include ':app', ':apt-compiler', ':apt-annotation'
+include ':app', ':apt-compiler', ':apt-annotation', ':javalib'

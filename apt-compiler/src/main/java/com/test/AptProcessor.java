@@ -60,31 +60,23 @@ public class AptProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {//这里开始处理我们的注解解析了，以及生成Java文件
-        info("Processor process start <<<");
         if (set == null || set.isEmpty()) {
             info(">>> set is null... <<<");
             return true;
         }
-
-        info(">>> Found field, start... <<<");
-
         Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(Print.class);
 
         if (elements == null || elements.isEmpty()) {
             info(">>> elements is null... <<<");
             return true;
         }
-
-        // 遍历所有被注解了@Factory的元素
+        // 遍历所有被注解了@Print的元素
         for (Element annotatedElement : elements) {
-
-            // 检查被注解为@Factory的元素是否是一个类
             if (annotatedElement.getKind() != ElementKind.CLASS) {
                 error(annotatedElement, "Only classes can be annotated with @%s",
                         Print.class.getSimpleName());
                 return true; // 退出处理
             }
-
             analysisAnnotated(annotatedElement);
         }
 
@@ -97,7 +89,6 @@ public class AptProcessor extends AbstractProcessor {
         Print annotation = classElement.getAnnotation(Print.class);
         String text = annotation.text();
 
-//        TypeElement superClassName = mElementUtils.getTypeElement(name);
         String newClassName = "A" + SUFFIX;
 
         StringBuilder builder = new StringBuilder()
@@ -111,11 +102,9 @@ public class AptProcessor extends AbstractProcessor {
         // this is appending to the return statement
         builder.append(text).append(text).append(" !\\n");
 
-
         builder.append("\";\n") // end return
                 .append("\t}\n") // close method
                 .append("}\n"); // close class
-
 
         try { // write the file
             JavaFileObject source = mFiler.createSourceFile("com.example.cc.knowldegedemo.auto." + newClassName);
@@ -127,8 +116,6 @@ public class AptProcessor extends AbstractProcessor {
             // Note: calling e.printStackTrace() will print IO errors
             // that occur from the file already existing after its first run, this is normal
         }
-
-        info(">>> analysisAnnotated is finish... <<<");
     }
 
     private void error(Element e, String msg, Object... args) {

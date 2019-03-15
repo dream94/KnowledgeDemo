@@ -9,9 +9,11 @@ import java.lang.reflect.Proxy;
 public class Main {
     public static void main(String[] args) {
         ASubject aSubject = new ASubject();
-        ISubject subject = (ISubject) Proxy.newProxyInstance(ISubject.class.getClassLoader(),
-                new Class[]{ISubject.class},
+        Subject subject = (Subject) Proxy.newProxyInstance(Subject.class.getClassLoader(),
+                new Class[]{Subject.class},
                 new ProxyHandler(aSubject));
         subject.doSth();
+        System.out.println(subject.getClass().getName());
+
     }
 }

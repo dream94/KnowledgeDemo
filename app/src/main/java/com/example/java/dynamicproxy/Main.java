@@ -3,7 +3,7 @@ package com.example.java.dynamicproxy;
 import java.lang.reflect.Proxy;
 
 /**
- * Created by cc on 2019/1/27.
+ * Created by cc on 2019/3/17.
  */
 
 public class Main {

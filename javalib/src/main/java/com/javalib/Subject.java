@@ -1,7 +1,7 @@
 package com.javalib;
 
 /**
- * Created by cc on 2019/1/27.
+ * Created by cc on 2019/3/17.
  */
 
 public interface Subject {

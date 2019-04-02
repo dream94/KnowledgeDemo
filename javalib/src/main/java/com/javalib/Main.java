@@ -22,11 +22,9 @@ public class Main {
 
     private static void testDynamicProxy() {
         ASubject aSubject = new ASubject();
-        Subject subject = (Subject) Proxy.newProxyInstance(Subject.class.getClassLoader(),
-                new Class[]{Subject.class},
-                new ProxyHandler(aSubject));
-        subject.doSth();
+        Subject proxySubject = (Subject) Proxy.newProxyInstance(Subject.class.getClassLoader(), new Class[]{Subject.class}, new ProxyHandler(aSubject));
+        proxySubject.doSth();
 
-        ProxyUtils.generateClassFile(ASubject.class, subject.getClass().getSimpleName());
+        ProxyUtils.generateClassFile(ASubject.class, proxySubject.getClass().getSimpleName());
     }
 }

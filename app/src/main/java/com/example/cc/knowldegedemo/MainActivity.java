@@ -1,6 +1,5 @@
 package com.example.cc.knowldegedemo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,6 +7,7 @@ import android.view.View;
 
 import com.example.cc.utils.AppUtils;
 import com.example.cc.utils.TimeUtils;
+import com.example.cc.view.CoverageView;
 import com.internal.Print;
 
 @Print(text = "aaa")
@@ -31,12 +31,18 @@ public class MainActivity extends AppCompatActivity {
 //                            }
 //                        });
 //                builder.create().show();
-                startActivity(new Intent(MainActivity.this, DynamicActivity.class));
+//                startActivity(new Intent(MainActivity.this, DynamicActivity.class));
+
+
             }
         });
 
 //        A$$Test test = new A$$Test();
 //        Log.e("dream", test.getMessage());
+
+        CoverageView coverageView = findViewById(R.id.coverage_view);
+        coverageView.setCircleTransparent(true);
+
     }
 
     @Override

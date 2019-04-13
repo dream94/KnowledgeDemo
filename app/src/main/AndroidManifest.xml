@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".ipc.AidlActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,6 +19,16 @@
         </activity>
         <activity android:name=".DynamicActivity" />
         <!--<activity android:name=".AActivity" />-->
+
+        <service
+            android:name=".ipc.AidlService"
+            android:exported="true"
+            android:process=".aidl">
+            <intent-filter>
+                <action android:name="com.example.cc.knowldegedemo.ipc"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

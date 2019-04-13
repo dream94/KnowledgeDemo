@@ -10,8 +10,17 @@ import java.lang.reflect.Proxy;
 
 public class Main {
     public static void main(String[] args) {
-        testStaticProxy();
-        testDynamicProxy();
+//        testStaticProxy();
+//        testDynamicProxy();
+
+        String a = "aaa";
+        change(a);
+        System.out.println(a);
+    }
+
+    private static void change(String s) {
+        s = s.replaceAll("a", "b");
+        System.out.println("change:" + s);
     }
 
     private static void testStaticProxy() {

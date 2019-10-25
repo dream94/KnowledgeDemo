@@ -10,6 +10,7 @@ import com.example.cc.utils.TimeUtils;
 import com.example.cc.view.CoverageView;
 import com.internal.Print;
 
+
 @Print(text = "aaa")
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         CoverageView coverageView = findViewById(R.id.coverage_view);
         coverageView.setCircleTransparent(true);
-
     }
 
     @Override
